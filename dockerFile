@@ -1,0 +1,11 @@
+FROM moxm/java:1.8-full
+
+RUN  mkdir -p /home/ruoyi
+#复制后端jar包
+COPY target/ruoyi.jar ruoyi.jar
+
+WORKDIR /home/ruoyi
+
+RUN  ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+
+CMD java -jar ruoyi.jar
