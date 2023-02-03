@@ -1,4 +1,9 @@
 
 tasks:
   - init: mvn install -DskipTests=false
+  - command: |
+      mvn package -f "/workspace/RuoYi-Vue-fast/pom.xml"
+      gp sync-done mvnPack
+  - command: gp sync-await mvnPack java -jar target/ruoyi.jar
+    openMode: split-right
 
